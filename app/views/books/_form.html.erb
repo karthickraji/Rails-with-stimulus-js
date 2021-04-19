@@ -1,0 +1,48 @@
+<%= form_with(model: book) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_pages %>
+    <%= form.number_field :total_pages, class:  "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isbn %>
+    <%= form.number_field :isbn, class: "form-control" %>
+  </div>
+
+  <div data-controller="books">
+    <template data-target="books.template">
+      <%= form.fields_for :comments, Comment.new, child_index: "NEW_RECORD" do |comment|%>
+        <%= render "comment_fields", form: comment %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :comments do |comment|%>
+      <%= render "comment_fields", form: comment %>
+    <% end %>
+
+    <div class="mb-3" data-target="books.links">
+      <%= link_to "Add Comment", "#", class: "btn btn-outline-primary", data: {action: "click->books#add_comment_association"} %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
