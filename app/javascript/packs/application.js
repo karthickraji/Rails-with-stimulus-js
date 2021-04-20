@@ -7,10 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+require("jquery")
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("third_party_libs/jquery.validate.min.js")
+require("third_party_libs/chart.min.js")
+require("third_party_libs/jquery.dataTables.min.js")
 
 import 'bootstrap';
 import "controllers"

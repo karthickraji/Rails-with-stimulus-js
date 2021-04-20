@@ -4,6 +4,15 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    respond_to do |format|
+      format.html 
+      format.json {
+        render :json => {
+          dates: ["20210414", "20210415", "20210416", "20210417","20210418","20210419","20210420"],
+          counts: [3,5,6,4,10,13,18]
+        }
+      }
+    end
   end
 
   # GET /books/1 or /books/1.json
@@ -58,13 +67,13 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def book_params
-      params.require(:book).permit(:title, :total_pages, :isbn, comments_attributes: [:id, :body, :_destroy])
-    end
+  # Only allow a list of trusted parameters through.
+  def book_params
+    params.require(:book).permit(:title, :total_pages, :isbn, comments_attributes: [:id, :body, :_destroy])
+  end
 end
