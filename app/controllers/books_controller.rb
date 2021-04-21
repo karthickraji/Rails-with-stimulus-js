@@ -4,19 +4,18 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    @date_wise_count = Book.order(:created_at).group("DATE(created_at)").count
     respond_to do |format|
       format.html 
       format.json {
-        render :json => {
-          dates: ["20210414", "20210415", "20210416", "20210417","20210418","20210419","20210420"],
-          counts: [3,5,6,4,10,13,18]
-        }
+        render :json => {dates: @date_wise_count.keys, counts: @date_wise_count.values}
       }
     end
   end
 
   # GET /books/1 or /books/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /books/new
@@ -74,6 +73,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:title, :total_pages, :isbn, comments_attributes: [:id, :body, :_destroy])
+    params.require(:book).permit(:title, :total_pages, :size_type, :isbn, comments_attributes: [:id, :body, :_destroy])
   end
 end

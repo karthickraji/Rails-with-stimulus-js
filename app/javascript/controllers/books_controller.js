@@ -4,9 +4,37 @@ export default class extends Controller {
   static targets = ["links", "template"]
   static values = { chartLabels: Array, chartDatacounts: Array}
 
-  initialize(){
+  connect(){
     console.log("hi books")
     // this.element.textContent = "Books!"
+
+    // this help us to prevent from turbolinks page load issue
+    // If we use window load event somewhere, sometime it doesn't call
+    // because of turbolinks so we can use method directly here or
+    // inside initialize() method
+    if ($("#list-books").is(':visible')){
+      this.draw_books_table();
+    }
+
+    if ($("#myChart").is(':visible')){
+      this.draw_books_graph();
+    }
+
+    if ($(".select2").is(':visible')){
+      this.initiate_select2();
+    }
+
+    if ($(".chosen-select").is(':visible')){
+      this.initiate_chosen_select();
+    }
+  }
+
+  initiate_select2(){
+    $(".select2").select2();
+  }
+
+  initiate_chosen_select(){
+    $(".chosen-select").chosen();
   }
 
   add_comment_association(event){

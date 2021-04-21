@@ -13,6 +13,8 @@
  *= require bootstrap
  *= require third_party_libs/jquery-ui.min.css
  *= require third_party_libs/jquery.dataTables.min.css
+ *= require third_party_libs/select2.min.css
+ *= require third_party_libs/chosen.min.css
  *= require_tree .
  *= require_self
  */

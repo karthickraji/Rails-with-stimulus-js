@@ -16,9 +16,14 @@
     <%= form.text_field :title, class: "form-control required" %>
   </div>
 
-  <div class="field">
+  <div class="field" data-controller="books">
     <%= form.label :total_pages %>
-    <%= form.number_field :total_pages, class:  "form-control required" %>
+    <%= form.select :total_pages, options_for_select(1..1000, selected: form.object.total_pages), {include_blank: true}, class: "form-control required select2" %>
+  </div>
+
+  <div class="field" data-controller="books">
+    <%= form.label :book_size_type %>
+    <%= form.select :size_type, options_for_select(Book.size_types.keys, selected: form.object.size_type), {include_blank: true}, class: "form-control required chosen-select" %>
   </div>
 
   <div class="field">

@@ -16,6 +16,8 @@ ActiveStorage.start()
 require("third_party_libs/jquery.validate.min.js")
 require("third_party_libs/chart.min.js")
 require("third_party_libs/jquery.dataTables.min.js")
+require("third_party_libs/select2.min.js")
+require("third_party_libs/chosen.jquery.min.js")
 
 import 'bootstrap';
 import "controllers"
