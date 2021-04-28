@@ -60,3 +60,6 @@ gem "stimulus-rails", "~> 0.2.3"
 gem "devise", "~> 4.7"
 
 gem "faker", "~> 2.17"
+
+gem 'will_paginate-bootstrap4'
+

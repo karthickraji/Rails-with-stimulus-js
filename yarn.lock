@@ -6827,6 +6827,11 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+stimulus-checkbox-select-all@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-checkbox-select-all/-/stimulus-checkbox-select-all-3.0.0.tgz#ddcd9655971307d35d59f9a2a2f024b74a83a004"
+  integrity sha512-58fNv9/Z/fPH0bygDXl1SA0ra0im97cnm5mqz4Ob+CPkVaA/cA9Di6dcYkQswQpEPNB8ucLlf6xwCpsfL5SsDQ==
+
 stimulus@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"

@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
 
+  def list_of_books
+    @books = Book.paginate(page: params[:page], per_page: 10)
+  end
+
   # GET /books or /books.json
   def index
     @books = Book.all
